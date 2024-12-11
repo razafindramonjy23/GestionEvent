@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Ajouter un nouvel évènement</h3>
+    <form action="{% url 'ajouter_evenement' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="titre">Titre : </label>
+        <input type="text" name="titre" id="titre"><br><br>
+
+        <label for="type">Type : </label>
+        <select name="type_evenement" id="type_evenement">
+            {% for type in types %}
+                <option value="{{ type.id_type_evenement }}">{{ type.nom_type_evenement }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="description">Description : </label>
+        <input type="text" name="description" id="description"><br>
+
+        <label for="nombre_participant">Nombre participant(s) : </label>
+        <input type="number" name="nombre_participant" id="nombre_participant"><br>
+
+        <label for="date_debut">Date début : </label>
+        <input type="date" name="date_debut" id="date_debut"><br>
+
+        <label for="date_fin">Date fin : </label>
+        <input type="date" name="date_fin" id="date_fin"><br>
+
+        <label for="heure">Heure : </label>
+        <input type="time" name="heure" id="heure"><br>
+
+        <label for="lieu">Lieu : </label>
+        <input type="text" name="lieu" id="lieu"><br>
+        
+        <!-- Champ de téléchargement de l'image -->
+        <label for="image_evenement">Image : </label>
+        <input type="file" name="image_evenement" id="image_evenement"><br>
+
+        <button type="submit">Ajouter l'événement</button>
+    </form>
+
+</body>
+</html>

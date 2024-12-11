@@ -8,10 +8,11 @@ class Type_Evenement(models.Model):
 class Evenement(models.Model):
     id_evenement = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=255)
+    type_evenement = models.ForeignKey(Type_Evenement, on_delete=models.CASCADE)
     description = models.TextField()
     nombre_participant = models.PositiveIntegerField()
-    date_debut = models.DateTimeField()
-    date_fin = models.DateTimeField()
+    date_debut = models.DateField()
+    date_fin = models.DateField()
     heure = models.TimeField()
     lieu = models.CharField(max_length=255)
     image_evenement = models.ImageField(upload_to='evenements/')

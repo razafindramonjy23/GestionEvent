@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Liste des Evenements</h1>
+
+    {% for evenement in evenements %}
+    <h1>Nom : {{ evenement.nom }}</h1>
+    <h2>Type : {{ evenement.type_evenement.nom_type_evenement }}</h2>
+    <h2>{{ evenement.description }}</h2>
+
+    <!-- Afficher l'image -->
+    {% if evenement.image_evenement %}
+        <img src="{{ evenement.image_evenement.url }}" alt="{{ evenement.nom }}">
+    {% else %}
+        <p>Aucune image disponible</p>
+    {% endif %}
+{% endfor %}
+
+</body>
+</html>

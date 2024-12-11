@@ -19,5 +19,9 @@ from django.urls import path,include
 from . import views as v
 
 urlpatterns = [
-    path("/liste_evenement", v.liste_evenement, name=("liste_evenement")),
+    path("liste_evenement", v.liste_evenement, name=("liste_evenement")),
+
+    path('ajouter_evenement_view', v.ajouter_evenement_view),
+    path('ajouter_evenement', v.ajouter_evenement_logic,name="ajouter_evenement"),
+
 ]
