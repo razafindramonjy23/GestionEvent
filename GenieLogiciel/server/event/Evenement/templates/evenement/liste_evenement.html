@@ -12,12 +12,14 @@
     <h2>Type : {{ evenement.type_evenement.nom_type_evenement }}</h2>
     <h2>{{ evenement.description }}</h2>
 
-    <!-- Afficher l'image -->
+    
     {% if evenement.image_evenement %}
         <img src="{{ evenement.image_evenement.url }}" alt="{{ evenement.nom }}">
     {% else %}
         <p>Aucune image disponible</p>
     {% endif %}
+
+    <a href="{% url 'modifier_evenement_view' id_evenement=evenement.id_evenement %}">Modifier</a>
 {% endfor %}
 
 </body>

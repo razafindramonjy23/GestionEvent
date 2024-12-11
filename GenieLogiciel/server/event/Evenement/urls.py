@@ -1,27 +1,16 @@
-"""
-URL configuration for event project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path
 from . import views as v
 
 urlpatterns = [
-    path("liste_evenement", v.liste_evenement, name=("liste_evenement")),
+    # Liste des événements
+    path("liste/evenement/", v.liste_evenement, name="liste_evenement"),
 
-    path('ajouter_evenement_view', v.ajouter_evenement_view),
-    path('ajouter_evenement', v.ajouter_evenement_logic,name="ajouter_evenement"),
+    # Ajouter un événement (vue pour afficher le formulaire)
+    path("ajouter/evenement/", v.ajouter_evenement_view, name="ajouter_evenement_view"),
+    # Ajouter un événement (logiciel pour gérer la soumission)
+    path("ajouter_evenement/", v.ajouter_evenement_logic, name="ajouter_evenement"),
 
+    # Modifier un événement
+    path("modifier/evenement/<int:id_evenement>/", v.modifier_evenement_view, name="modifier_evenement_view"),
 ]

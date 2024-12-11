@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Événement</title>
+</head>
+<body>
+    <h1>Modifier l'Événement</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nom">Nom : </label>
+        <input type="text" name="nom" id="nom" value="{{ evenement.nom }}"><br><br>
+
+        <label for="type_evenement">Type : </label>
+        <select name="type_evenement" id="type_evenement">
+            {% for type in types %}
+                <option value="{{ type.id_type_evenement }}" {% if type.id_type_evenement == evenement.type_evenement_id %}selected{% endif %}>
+                    {{ type.nom_type_evenement }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="description">Description : </label>
+        <input type="text" name="description" id="description" value="{{ evenement.description }}"><br>
+
+        <label for="nombre_participant">Nombre participant(s) : </label>
+        <input type="number" name="nombre_participant" id="nombre_participant" value="{{ evenement.nombre_participant }}"><br>
+
+        <label for="date_debut">Date début : </label>
+        <input type="date" name="date_debut" id="date_debut" value="{{ evenement.date_debut|date:"Y-m-d" }}"><br>
+
+        <label for="date_fin">Date fin : </label>
+        <input type="date" name="date_fin" id="date_fin" value="{{ evenement.date_fin|date:"Y-m-d" }}"><br>
+
+        <label for="heure">Heure : </label>
+        <input type="time" name="heure" id="heure" value="{{ evenement.heure }}"><br>
+
+        <label for="lieu">Lieu : </label>
+        <input type="text" name="lieu" id="lieu" value="{{ evenement.lieu }}"><br>
+        
+        <label for="image_evenement">Image : </label>
+        {% if evenement.image_evenement %}
+            <img src="{{ evenement.image_evenement.url }}" alt="{{ evenement.nom }}" width="100"><br>
+        {% endif %}
+        <input type="file" name="image_evenement" id="image_evenement"><br>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Liste des Utilisateurs</h1>
+
+    {% for utilisateur in utilisateurs %}
+    <h1>Nom : {{ utilisateur.nom_utilisateur }}</h1>
+    <h2>Type : {{ utilisateur.type_utilisateur.type_utilisateur }}</h2>
+    <h2>Role : {{ utilisateur.type_utilisateur.role_utilisateur }}</h2>
+    <h2>{{ utilisateur.bio }}</h2>
+
+    
+    {% if utilisateur.photo_utilisateur %}
+        <img src="{{ utilisateur.photo_utilisateur.url }}" alt="{{ utilisateur.nom_utilisateur }}">
+    {% else %}
+        <p>Aucune image disponible</p>
+    {% endif %}
+
+{% endfor %}
+
+</body>
+</html>

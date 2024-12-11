@@ -19,5 +19,12 @@ from django.urls import path,include
 from . import views as v
 
 urlpatterns = [
-    
+        # Liste des événements
+    path("liste_utilisateur", v.liste_utilisateur, name="liste_utilisateur"),
+
+    # Ajouter un événement (vue pour afficher le formulaire)
+    #path("ajouter/utilisateur/", v.ajouter_utilisateur_view, name="ajouter_utilisateur_view"),
+
+    # Ajouter un événement (logiciel pour gérer la soumission)
+    #path("ajouter_utilisateur/", v.ajouter_utilisateur_logic, name="ajouter_utilisateur"),
 ]
